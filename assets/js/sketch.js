@@ -1,7 +1,7 @@
 var boxo;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windows.innerWidth, window.innerHeight);
 	boxo = new Boxo();
 	frameRate(10);
 }
