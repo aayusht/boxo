@@ -1,8 +1,8 @@
-function Boxo() {
-  this.x = width/2;
-  this.y = height/2;
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
 
-  this.show = function() {
-    rect(this.x, this.y, 20, 20)
-  }
-}
+ctx.beginPath();
+ctx.rect(20, 40, 50, 50);
+ctx.fillStyle = "#FF0000";
+ctx.fill();
+ctx.closePath();
