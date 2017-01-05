@@ -3,6 +3,6 @@ function Boxo() {
   this.y = height/2;
 
   this.show = function() {
-    rect(x, y, 20, 20)
+    rect(this.x, this.y, 20, 20)
   }
 }
