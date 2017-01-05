@@ -1,11 +1,19 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Node.js Multiplayer Drawing Game | Tutorialzine Demo</title>
 
-<body>
-  <div id="cursors">
+        <!-- The stylesheets -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+		<div id="cursors">
 	    	<!-- The mouse pointers will be created here -->
 		</div>
 
@@ -18,5 +26,11 @@
 			<h2>You will see everyone else who's doing the same.</h2>
 			<h3>Tip: if the stage gets dirty, simply reload the page</h3>
 		</hgroup>
-</body>
+
+        <!-- JavaScript includes. Notice that socket.io.js is served by node.js -->
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+		<script src="assets/js/script.js"></script>
+
+    </body>
 </html>
