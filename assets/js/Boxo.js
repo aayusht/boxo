@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 ctx.canvas.width  = window.innerWidth-20;
 ctx.canvas.height = window.innerHeight-20;
 var ballRadius = 10;
+var holeRadius = ballRadius+1;
 var x = canvas.width/2;
 var y = canvas.height/2;
 var x1 = 0;
@@ -22,7 +23,7 @@ document.addEventListener("keyup", keyUpHandler, false);
 
 function drawHole() {
     ctx.beginPath();
-    ctx.arc(x1, y1, ballRadius + 1, 0, Math.PI*2);
+    ctx.arc(x1, y1, holeRadius, 0, Math.PI*2);
     ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
@@ -33,9 +34,27 @@ function updateHole() {
     y1 = Math.floor(Math.random() * ctx.canvas.height);
 }
 
-function detectCollisions() {
-    if(Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y)) < ballRadius + 1) {
+function fall() {
+    if (ballRadius < 3) {
+    		ballRadius = 10;
         updateHole();
+				x = canvas.width/2;
+				y = canvas.height/2;
+		}
+    else {
+    		ballRadius -= .1;
+        x = x1;
+        y = y1;
+        dx = 0;
+        dy = 0;
+        ax = 0;
+        ay = 0;
+    }
+}
+
+function detectCollisions() {
+    if(Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y)) < holeRadius) {
+     		fall();
     }
 }
 
