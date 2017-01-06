@@ -30,8 +30,8 @@ function drawHole() {
 }
 
 function updateHole() {
-    x1 = Math.floor(Math.random() * ctx.canvas.width);
-    y1 = Math.floor(Math.random() * ctx.canvas.height);
+    x1 = Math.floor(Math.random() * (ctx.canvas.width - 12)) + 6;
+    y1 = Math.floor(Math.random() * (ctx.canvas.height - 12)) + 6;
 }
 
 function fall() {
@@ -90,6 +90,12 @@ function draw() {
     if(downPressed) {ay = .01;}
     if(upPressed) {ay = -.01;}
     if(!downPressed && !upPressed) {ay = 0;}
+    if (x1 != x) {
+    	ax = -(x-x1) / Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y));
+    	ay = -(y-y1) / Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y));
+      ax += Math.random();
+      ay += Math.random();
+    }
 
     dx += ax;
     dy += ay;
