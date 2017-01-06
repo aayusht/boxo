@@ -20,6 +20,7 @@ var downPressed = false;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener('click', onclick, false)
 
 function drawHole() {
     ctx.beginPath();
@@ -27,6 +28,11 @@ function drawHole() {
     ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.closePath();
+}
+
+function onclick(event) {
+    x1 = event.clientX;
+    y1 = event.clientY;
 }
 
 function updateHole() {
@@ -84,17 +90,15 @@ function draw() {
     drawHole();
 		drawInfo();
     drawBall();
-    if(rightPressed) {ax = .01;}
-    if(leftPressed) {ax = -.01;}
-    if(!rightPressed && !leftPressed) {ax = 0;}
-    if(downPressed) {ay = .01;}
-    if(upPressed) {ay = -.01;}
-    if(!downPressed && !upPressed) {ay = 0;}
+    if(rightPressed) {x1+=1;}
+    if(leftPressed) {x1-=1;}
+    if(downPressed) {y1+=1;}
+    if(upPressed) {y1-=1;}
     if (x1 != x) {
     	ax = -(x-x1) / Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y));
     	ay = -(y-y1) / Math.sqrt((x1-x)*(x1-x) + (y1-y)*(y1-y));
-      ax += Math.random();
-      ay += Math.random();
+      ax += Math.random()*2 - 1;
+      ay += Math.random()*2 - 1;
     }
 
     dx += ax;
